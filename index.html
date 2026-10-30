@@ -9,34 +9,82 @@
             color: white;
             font-family: Arial;
             text-align: center;
-            padding: 50px;
+            margin: 0;
+        }
+
+        header {
+            background: #202040;
+            padding: 30px;
         }
 
         h1 {
             color: orange;
-            font-size: 45px;
+            font-size: 40px;
         }
 
-        p {
-            font-size: 20px;
+        .characters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px;
         }
 
-        button {
-            background: orange;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
+        .card {
+            background: #252545;
+            border: 2px solid orange;
+            border-radius: 15px;
+            padding: 20px;
+            width: 200px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+        }
+
+        .card h2 {
+            color: orange;
         }
     </style>
 </head>
 <body>
 
+<header>
     <h1>DRAGON BALL GODS</h1>
-
     <p>Welcome to the World of Gods!</p>
+</header>
 
-    <button>Explore Characters</button>
+<h2>Explore Characters</h2>
+
+<div class="characters">
+
+    <div class="card">
+        <img src="https://placehold.co/200x200?text=GOKU" alt="Goku">
+        <h2>Goku</h2>
+        <p>The Saiyan Warrior</p>
+    </div>
+
+    <div class="card">
+        <img src="https://placehold.co/200x200?text=VEGETA" alt="Vegeta">
+        <h2>Vegeta</h2>
+        <p>Prince of Saiyans</p>
+    </div>
+
+    <div class="card">
+        <img src="https://placehold.co/200x200?text=BEERUS" alt="Beerus">
+        <h2>Beerus</h2>
+        <p>God of Destruction</p>
+    </div>
+
+    <div class="card">
+        <img src="https://placehold.co/200x200?text=WHIS" alt="Whis">
+        <h2>Whis</h2>
+        <p>Angel and Guide</p>
+    </div>
+
+</div>
 
 </body>
 </html>
