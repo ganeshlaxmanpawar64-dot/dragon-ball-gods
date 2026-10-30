@@ -1,470 +1,517 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dragon Ball Gods</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dragon Ball Gods</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            background: #090914;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            text-align: center;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #080b18;
+    color: white;
+    min-height: 100vh;
+}
 
-        header {
-            background: linear-gradient(135deg, #17172e, #42165e);
-            padding: 35px 15px;
-            border-bottom: 3px solid orange;
-        }
+header {
+    text-align: center;
+    padding: 45px 15px;
+    background: linear-gradient(135deg, #101b38, #211044, #071b32);
+    border-bottom: 2px solid #4169e1;
+    box-shadow: 0 5px 30px #2454ff33;
+}
 
-        h1 {
-            color: orange;
-            font-size: 38px;
-            text-shadow: 0 0 15px orange;
-        }
+header h1 {
+    font-size: 38px;
+    letter-spacing: 3px;
+    color: #ffffff;
+    text-shadow: 0 0 15px #5b8cff;
+}
 
-        header p {
-            color: #ddd;
-        }
+header p {
+    margin-top: 12px;
+    color: #b9c9ff;
+}
 
-        .controls {
-            padding: 25px 12px 5px;
-        }
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 25px 15px;
+}
 
-        input, select {
-            padding: 13px;
-            margin: 7px;
-            width: 260px;
-            max-width: 90%;
-            border-radius: 8px;
-            border: 2px solid orange;
-            background: #202038;
-            color: white;
-            font-size: 16px;
-        }
+input, select {
+    padding: 13px;
+    width: 260px;
+    border-radius: 8px;
+    border: 1px solid #526baf;
+    background: #111a32;
+    color: white;
+    outline: none;
+}
 
-        .characters {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 25px 12px;
-        }
+input:focus, select:focus {
+    border-color: #65aaff;
+    box-shadow: 0 0 12px #398cff77;
+}
 
-        .card {
-            background: linear-gradient(145deg, #252545, #17172d);
-            border: 2px solid orange;
-            border-radius: 15px;
-            padding: 20px;
-            width: 250px;
-            transition: 0.3s;
-        }
+h2.section-title {
+    text-align: center;
+    margin: 20px 0;
+    color: #d8e4ff;
+}
 
-        .card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 0 18px orange;
-        }
+.characters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: auto;
+}
 
-        .card h2 {
-            color: orange;
-        }
+.card {
+    --power: #4d8cff;
+    background: linear-gradient(145deg, #151d32, #0c1020);
+    border: 1px solid var(--power);
+    border-top: 4px solid var(--power);
+    border-radius: 14px;
+    padding: 20px;
+    transition: 0.3s;
+    box-shadow: 0 0 12px color-mix(in srgb, var(--power) 20%, transparent);
+}
 
-        .series {
-            color: #d6a4ff;
-            font-weight: bold;
-        }
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 0 25px color-mix(in srgb, var(--power) 55%, transparent);
+}
 
-        .forms {
-            color: #ddd;
-            line-height: 1.7;
-            font-size: 14px;
-        }
+.card h3 {
+    color: var(--power);
+    font-size: 22px;
+    margin-bottom: 12px;
+}
 
-        .tag {
-            display: inline-block;
-            background: #49236b;
-            padding: 5px 10px;
-            border-radius: 15px;
-            margin: 3px;
-            font-size: 12px;
-        }
+.card p {
+    color: #d2d9eb;
+    line-height: 1.6;
+    margin: 8px 0;
+}
 
-        footer {
-            padding: 25px;
-            background: #17172d;
-            color: orange;
-        }
+.card select {
+    width: 100%;
+    margin-top: 12px;
+    border-color: var(--power);
+}
 
-        #noResult {
-            display: none;
-            color: orange;
-            padding: 25px;
-        }
-    </style>
+.power {
+    color: var(--power) !important;
+    font-weight: bold;
+}
+
+.goku { --power: #ff9b32; }
+.vegeta { --power: #428dff; }
+.gohan { --power: #b66aff; }
+.goten { --power: #ffbd50; }
+.trunks { --power: #d58aff; }
+.black { --power: #ff4caa; }
+.broly { --power: #4dff79; }
+.gogeta { --power: #35d9ff; }
+.vegito { --power: #ff4d63; }
+.gotenks { --power: #e5d34c; }
+.beerus { --power: #b56aff; }
+.whis { --power: #50dcff; }
+.frieza { --power: #f1eaff; }
+.piccolo { --power: #56e36b; }
+.cell { --power: #9bdc54; }
+.jiren { --power: #ff5555; }
+.android { --power: #50e0bd; }
+.buu { --power: #ff83c8; }
+.zamasu { --power: #65ffb1; }
+.zeno { --power: #ffe66a; }
+
+.no-results {
+    display: none;
+    text-align: center;
+    color: #ffaaaa;
+    padding: 30px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+    background: #10162a;
+    border-top: 1px solid #38518c;
+    color: #aabbe5;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>🐉 DRAGON BALL GODS</h1>
-    <p>Welcome to the Ultimate Dragon Ball Universe!</p>
+    <h1>DRAGON BALL GODS</h1>
+    <p>Welcome to the World of Gods!</p>
     <p>Explore Characters • Transformations • Powers</p>
 </header>
 
 <div class="controls">
-
-    <h2>🔍 Find Your Character</h2>
-
-    <input
-        type="text"
-        id="search"
-        placeholder="Search Goku, Vegeta, Broly..."
-        oninput="filterCharacters()"
-    >
-
-    <br>
+    <input type="text" id="search" placeholder="Search character..." oninput="filterCharacters()">
 
     <select id="series" onchange="filterCharacters()">
         <option value="all">All Series</option>
-        <option value="Z">Dragon Ball Z</option>
-        <option value="Super">Dragon Ball Super</option>
-        <option value="GT">Dragon Ball GT</option>
-        <option value="Daima">Dragon Ball Daima</option>
+        <option value="z">Dragon Ball Z</option>
+        <option value="super">Dragon Ball Super</option>
+        <option value="gt">Dragon Ball GT</option>
+        <option value="daima">Dragon Ball Daima</option>
     </select>
-
 </div>
 
-<h2>⚡ Explore Characters</h2>
+<h2 class="section-title">⚡ CHARACTER UNIVERSE ⚡</h2>
 
 <div class="characters" id="characters">
 
-    <div class="card" data-series="Z,Super,GT,Daima">
-        <h2>Goku</h2>
-        <span class="tag">Saiyan</span>
-        <p class="series">Z • Super • GT • Daima</p>
-        <p class="forms">
-            Transformations:<br>
-            Super Saiyan<br>
-            Super Saiyan 2<br>
-            Super Saiyan 3<br>
-            Super Saiyan 4<br>
-            Super Saiyan God<br>
-            Super Saiyan Blue<br>
-            Ultra Instinct
-        </p>
-        <p>Power: Saiyan Warrior, Ki Control, Kamehameha</p>
-    </div>
+<div class="card goku" data-series="z super gt daima">
+<h3>Goku</h3>
+<p>Series: Z, Super, GT, Daima</p>
+<p>Power: Saiyan Warrior</p>
+<p>Ability: Kamehameha, Instant Transmission</p>
+<select onchange="changePower(this)">
+<option>Base Form</option>
+<option>Super Saiyan</option>
+<option>Super Saiyan 2</option>
+<option>Super Saiyan 3</option>
+<option>Super Saiyan God</option>
+<option>Super Saiyan Blue</option>
+<option>Ultra Instinct</option>
+<option>Ultra Instinct Sign</option>
+</select>
+<p class="power">Transformation: Base Form</p>
+</div>
 
-    <div class="card" data-series="Z,Super,GT,Daima">
-        <h2>Vegeta</h2>
-        <span class="tag">Saiyan Prince</span>
-        <p class="series">Z • Super • GT • Daima</p>
-        <p class="forms">
-            Transformations:<br>
-            Super Saiyan<br>
-            Super Saiyan 2<br>
-            Super Saiyan 4<br>
-            Super Saiyan God<br>
-            Super Saiyan Blue<br>
-            Blue Evolution<br>
-            Ultra Ego
-        </p>
-        <p>Power: Final Flash, Galick Gun</p>
-    </div>
+<div class="card vegeta" data-series="z super">
+<h3>Vegeta</h3>
+<p>Series: Z, Super</p>
+<p>Power: Prince of Saiyans</p>
+<p>Ability: Final Flash, Galick Gun</p>
+<select onchange="changePower(this)">
+<option>Base Form</option>
+<option>Super Saiyan</option>
+<option>Super Saiyan 2</option>
+<option>Super Saiyan God</option>
+<option>Super Saiyan Blue</option>
+<option>Blue Evolution</option>
+<option>Ultra Ego</option>
+</select>
+<p class="power">Transformation: Base Form</p>
+</div>
 
-    <div class="card" data-series="Z,Super,GT,Daima">
-        <h2>Gohan</h2>
-        <span class="tag">Half Saiyan</span>
-        <p class="series">Z • Super • GT • Daima</p>
-        <p class="forms">
-            Transformations:<br>
-            Super Saiyan<br>
-            Super Saiyan 2<br>
-            Ultimate Gohan<br>
-            Beast Gohan
-        </p>
-        <p>Power: Masenko, Special Beam Cannon</p>
-    </div>
+<div class="card gohan" data-series="z super">
+<h3>Gohan</h3>
+<p>Series: Z, Super</p>
+<p>Power: Half Saiyan Warrior</p>
+<p>Ability: Masenko, Special Beam Cannon</p>
+<select onchange="changePower(this)">
+<option>Base Form</option>
+<option>Super Saiyan</option>
+<option>Super Saiyan 2</option>
+<option>Ultimate Gohan</option>
+<option>Beast Gohan</option>
+</select>
+<p class="power">Transformation: Base Form</p>
+</div>
 
-    <div class="card" data-series="Z,Super,GT">
-        <h2>Goten</h2>
-        <span class="tag">Saiyan</span>
-        <p class="series">Z • Super • GT</p>
-        <p class="forms">
-            Transformations:<br>
-            Super Saiyan
-        </p>
-        <p>Power: Kamehameha, Fusion</p>
-    </div>
+<div class="card goten" data-series="z">
+<h3>Goten</h3>
+<p>Series: Z</p>
+<p>Power: Young Saiyan</p>
+<p>Ability: Kamehameha</p>
+<select onchange="changePower(this)">
+<option>Base Form</option>
+<option>Super Saiyan</option>
+</select>
+<p class="power">Transformation: Base Form</p>
+</div>
 
-    <div class="card" data-series="Z,Super,GT,Daima">
-        <h2>Trunks</h2>
-        <span class="tag">Saiyan</span>
-        <p class="series">Z • Super • GT • Daima</p>
-        <p class="forms">
-            Transformations:<br>
-            Super Saiyan<br>
-            Super Saiyan 2<br>
-            Super Saiyan Rage<br>
-            Super Saiyan Grade 3
-        </p>
-        <p>Power: Burning Attack, Sword Skills</p>
-    </div>
+<div class="card trunks" data-series="z super">
+<h3>Trunks</h3>
+<p>Series: Z, Super</p>
+<p>Power: Saiyan Warrior</p>
+<p>Ability: Burning Attack, Sword Attacks</p>
+<select onchange="changePower(this)">
+<option>Base Form</option>
+<option>Super Saiyan</option>
+<option>Super Saiyan 2</option>
+<option>Super Saiyan Rage</option>
+</select>
+<p class="power">Transformation: Base Form</p>
+</div>
 
-    <div class="card" data-series="Super">
-        <h2>Goku Black</h2>
-        <span class="tag">Villain</span>
-        <p class="series">Dragon Ball Super</p>
-        <p class="forms">
-            Transformations:<br>
-            Base Form<br>
-            Super Saiyan Rosé
-        </p>
-        <p>Power: Godly Ki, Black Kamehameha</p>
-    </div>
+<div class="card black" data-series="super">
+<h3>Goku Black</h3>
+<p>Series: Super</p>
+<p>Power: Evil Saiyan God</p>
+<p>Ability: Divine Lasso, Black Kamehameha</p>
+<select onchange="changePower(this)">
+<option>Base Form</option>
+<option>Super Saiyan Rosé</option>
+</select>
+<p class="power">Transformation: Base Form</p>
+</div>
 
-    <div class="card" data-series="Super">
-        <h2>Broly</h2>
-        <span class="tag">Legendary Saiyan</span>
-        <p class="series">Dragon Ball Super</p>
-        <p class="forms">
-            Transformations:<br>
-            Wrathful Form<br>
-            Super Saiyan<br>
-            Full Power Super Saiyan
-        </p>
-        <p>Power: Gigantic Roar, Extreme Strength</p>
-    </div>
+<div class="card broly" data-series="super">
+<h3>Broly</h3>
+<p>Series: Super</p>
+<p>Power: Legendary Saiyan</p>
+<p>Ability: Gigantic Roar, Energy Blasts</p>
+<select onchange="changePower(this)">
+<option>Base Form</option>
+<option>Super Saiyan</option>
+<option>Legendary Super Saiyan</option>
+<option>Full Power</option>
+</select>
+<p class="power">Transformation: Base Form</p>
+</div>
 
-    <div class="card" data-series="Super">
-        <h2>Gogeta</h2>
-        <span class="tag">Fusion</span>
-        <p class="series">Dragon Ball Super</p>
-        <p class="forms">
-            Transformations:<br>
-            Base Form<br>
-            Super Saiyan<br>
-            Super Saiyan Blue
-        </p>
-        <p>Power: Stardust Breaker, Big Bang Kamehameha</p>
-    </div>
+<div class="card gogeta" data-series="z super">
+<h3>Gogeta</h3>
+<p>Series: Z, Super</p>
+<p>Power: Goku + Vegeta Fusion</p>
+<p>Ability: Stardust Breaker, Big Bang Kamehameha</p>
+<select onchange="changePower(this)">
+<option>Base Form</option>
+<option>Super Saiyan</option>
+<option>Super Saiyan Blue</option>
+</select>
+<p class="power">Transformation: Base Form</p>
+</div>
 
-    <div class="card" data-series="Z,Super">
-        <h2>Vegito</h2>
-        <span class="tag">Fusion</span>
-        <p class="series">Z • Super</p>
-        <p class="forms">
-            Transformations:<br>
-            Base Form<br>
-            Super Saiyan<br>
-            Super Saiyan Blue
-        </p>
-        <p>Power: Final Kamehameha</p>
-    </div>
+<div class="card vegito" data-series="z super">
+<h3>Vegito</h3>
+<p>Series: Z, Super</p>
+<p>Power: Potara Fusion</p>
+<p>Ability: Final Kamehameha</p>
+<select onchange="changePower(this)">
+<option>Base Form</option>
+<option>Super Saiyan</option>
+<option>Super Saiyan Blue</option>
+</select>
+<p class="power">Transformation: Base Form</p>
+</div>
 
-    <div class="card" data-series="Z,Super">
-        <h2>Gotenks</h2>
-        <span class="tag">Fusion</span>
-        <p class="series">Z • Super</p>
-        <p class="forms">
-            Transformations:<br>
-            Super Saiyan<br>
-            Super Saiyan 3
-        </p>
-        <p>Power: Super Ghost Kamikaze Attack</p>
-    </div>
+<div class="card gotenks" data-series="z">
+<h3>Gotenks</h3>
+<p>Series: Z</p>
+<p>Power: Fusion Warrior</p>
+<p>Ability: Super Ghost Kamikaze Attack</p>
+<select onchange="changePower(this)">
+<option>Base Form</option>
+<option>Super Saiyan</option>
+<option>Super Saiyan 3</option>
+</select>
+<p class="power">Transformation: Base Form</p>
+</div>
 
-    <div class="card" data-series="Super">
-        <h2>Beerus</h2>
-        <span class="tag">God of Destruction</span>
-        <p class="series">Dragon Ball Super</p>
-        <p class="forms">
-            Powers:<br>
-            Hakai<br>
-            Godly Ki<br>
-            Destruction Energy
-        </p>
-        <p>Power: Destruction God</p>
-    </div>
+<div class="card beerus" data-series="super">
+<h3>Beerus</h3>
+<p>Series: Super</p>
+<p>Power: God of Destruction</p>
+<p>Ability: Hakai, Destruction Energy</p>
+<p class="power">Divine Power: Destruction</p>
+</div>
 
-    <div class="card" data-series="Super">
-        <h2>Whis</h2>
-        <span class="tag">Angel</span>
-        <p class="series">Dragon Ball Super</p>
-        <p class="forms">
-            Powers:<br>
-            Ultra Instinct<br>
-            Time Reversal<br>
-            Angel Abilities
-        </p>
-        <p>Power: Angel Staff</p>
-    </div>
+<div class="card whis" data-series="super">
+<h3>Whis</h3>
+<p>Series: Super</p>
+<p>Power: Angel</p>
+<p>Ability: Ultra Instinct, Time Reversal</p>
+<p class="power">Divine Power: Angel Techniques</p>
+</div>
 
-    <div class="card" data-series="Super">
-        <h2>Frieza</h2>
-        <span class="tag">Villain</span>
-        <p class="series">Dragon Ball Super</p>
-        <p class="forms">
-            Transformations:<br>
-            First Form<br>
-            Final Form<br>
-            Golden Frieza<br>
-            Black Frieza
-        </p>
-        <p>Power: Death Beam, Death Ball</p>
-    </div>
+<div class="card frieza" data-series="z super">
+<h3>Frieza</h3>
+<p>Series: Z, Super</p>
+<p>Power: Galactic Emperor</p>
+<p>Ability: Death Beam, Death Ball</p>
+<select onchange="changePower(this)">
+<option>First Form</option>
+<option>Final Form</option>
+<option>Golden Frieza</option>
+<option>Black Frieza</option>
+</select>
+<p class="power">Transformation: First Form</p>
+</div>
 
-    <div class="card" data-series="Z,Super">
-        <h2>Piccolo</h2>
-        <span class="tag">Namekian</span>
-        <p class="series">Z • Super</p>
-        <p class="forms">
-            Forms:<br>
-            Fused Piccolo<br>
-            Potential Unleashed<br>
-            Orange Piccolo
-        </p>
-        <p>Power: Special Beam Cannon</p>
-    </div>
+<div class="card piccolo" data-series="z super">
+<h3>Piccolo</h3>
+<p>Series: Z, Super</p>
+<p>Power: Namekian Warrior</p>
+<p>Ability: Special Beam Cannon, Hellzone Grenade</p>
+<select onchange="changePower(this)">
+<option>Base Form</option>
+<option>Potential Unleashed</option>
+<option>Orange Piccolo</option>
+</select>
+<p class="power">Transformation: Base Form</p>
+</div>
 
-    <div class="card" data-series="Z,Super">
-        <h2>Cell</h2>
-        <span class="tag">Android</span>
-        <p class="series">Z • Super</p>
-        <p class="forms">
-            Forms:<br>
-            Imperfect Cell<br>
-            Semi-Perfect Cell<br>
-            Perfect Cell<br>
-            Super Perfect Cell
-        </p>
-        <p>Power: Solar Kamehameha</p>
-    </div>
+<div class="card cell" data-series="z">
+<h3>Cell</h3>
+<p>Series: Z</p>
+<p>Power: Bio Android</p>
+<p>Ability: Solar Kamehameha</p>
+<select onchange="changePower(this)">
+<option>Imperfect Form</option>
+<option>Semi Perfect Form</option>
+<option>Perfect Form</option>
+<option>Super Perfect Cell</option>
+</select>
+<p class="power">Transformation: Imperfect Form</p>
+</div>
 
-    <div class="card" data-series="Super">
-        <h2>Jiren</h2>
-        <span class="tag">Pride Trooper</span>
-        <p class="series">Dragon Ball Super</p>
-        <p class="forms">
-            Forms:<br>
-            Base Form<br>
-            Full Power Jiren
-        </p>
-        <p>Power: Incredible Strength, Energy Attacks</p>
-    </div>
+<div class="card jiren" data-series="super">
+<h3>Jiren</h3>
+<p>Series: Super</p>
+<p>Power: Pride Trooper</p>
+<p>Ability: Power Impact, Energy Attacks</p>
+<select onchange="changePower(this)">
+<option>Base Form</option>
+<option>Full Power</option>
+</select>
+<p class="power">Transformation: Base Form</p>
+</div>
 
-    <div class="card" data-series="Super">
-        <h2>Android 17</h2>
-        <span class="tag">Android</span>
-        <p class="series">Dragon Ball Super</p>
-        <p class="forms">
-            Forms:<br>
-            Android 17<br>
-            Super 17 (GT)
-        </p>
-        <p>Power: Infinite Energy, Barrier</p>
-    </div>
+<div class="card android" data-series="z super">
+<h3>Android 17</h3>
+<p>Series: Z, Super</p>
+<p>Power: Android Fighter</p>
+<p>Ability: Barrier, Energy Blasts</p>
+<p class="power">Power: Infinite Energy</p>
+</div>
 
-    <div class="card" data-series="Super">
-        <h2>Android 18</h2>
-        <span class="tag">Android</span>
-        <p class="series">Dragon Ball Super</p>
-        <p class="forms">
-            Forms:<br>
-            Android 18
-        </p>
-        <p>Power: Infinite Energy, Ki Attacks</p>
-    </div>
+<div class="card android" data-series="z">
+<h3>Android 18</h3>
+<p>Series: Z</p>
+<p>Power: Android Fighter</p>
+<p>Ability: Energy Wave, Barrier</p>
+<p class="power">Power: Infinite Energy</p>
+</div>
 
-    <div class="card" data-series="Z,Super">
-        <h2>Majin Buu</h2>
-        <span class="tag">Majin</span>
-        <p class="series">Z • Super</p>
-        <p class="forms">
-            Forms:<br>
-            Innocent Buu<br>
-            Evil Buu<br>
-            Super Buu<br>
-            Kid Buu
-        </p>
-        <p>Power: Regeneration, Absorption</p>
-    </div>
+<div class="card buu" data-series="z">
+<h3>Majin Buu</h3>
+<p>Series: Z</p>
+<p>Power: Majin Warrior</p>
+<p>Ability: Regeneration, Candy Beam</p>
+<select onchange="changePower(this)">
+<option>Innocent Buu</option>
+<option>Evil Buu</option>
+<option>Super Buu</option>
+<option>Kid Buu</option>
+</select>
+<p class="power">Transformation: Innocent Buu</p>
+</div>
 
-    <div class="card" data-series="Super">
-        <h2>Fused Zamasu</h2>
-        <span class="tag">Villain</span>
-        <p class="series">Dragon Ball Super</p>
-        <p class="forms">
-            Forms:<br>
-            Fused Zamasu<br>
-            Corrupted Fused Zamasu
-        </p>
-        <p>Power: Immortality, Godly Ki</p>
-    </div>
+<div class="card zamasu" data-series="super">
+<h3>Fused Zamasu</h3>
+<p>Series: Super</p>
+<p>Power: Immortal Kai Fusion</p>
+<p>Ability: Holy Wrath, Blades of Judgement</p>
+<p class="power">Divine Power: Immortality</p>
+</div>
 
-    <div class="card" data-series="Super">
-        <h2>Zeno</h2>
-        <span class="tag">Omni-King</span>
-        <p class="series">Dragon Ball Super</p>
-        <p class="forms">
-            Powers:<br>
-            Universe Erasure<br>
-            Absolute Authority
-        </p>
-        <p>Power: Erase Universes</p>
-    </div>
+<div class="card zeno" data-series="super">
+<h3>Zeno</h3>
+<p>Series: Super</p>
+<p>Power: Omni-King</p>
+<p>Ability: Erase Entire Universes</p>
+<p class="power">Divine Power: Absolute Erasure</p>
+</div>
 
 </div>
 
-<h2 id="noResult">No Character Found!</h2>
+<p class="no-results" id="noResults">No character found!</p>
 
 <footer>
-    <h2>🐉 DRAGON BALL GODS</h2>
-    <p>Explore the Power of the Dragon Ball Universe!</p>
+    <h2>DRAGON BALL GODS</h2>
+    <p>Explore the Power of Every Warrior</p>
+    <p>Fan-made Dragon Ball website</p>
 </footer>
 
 <script>
-    function filterCharacters() {
+function filterCharacters() {
+    const search = document.getElementById("search").value.toLowerCase();
+    const series = document.getElementById("series").value;
+    const cards = document.querySelectorAll(".card");
+    let visible = 0;
 
-        let search = document.getElementById("search").value.toLowerCase();
+    cards.forEach(card => {
+        const matchesName = card.innerText.toLowerCase().includes(search);
+        const matchesSeries = series === "all" ||
+            card.dataset.series.split(" ").includes(series);
 
-        let series = document.getElementById("series").value;
+        if (matchesName && matchesSeries) {
+            card.style.display = "block";
+            visible++;
+        } else {
+            card.style.display = "none";
+        }
+    });
 
-        let cards = document.querySelectorAll(".card");
+    document.getElementById("noResults").style.display =
+        visible === 0 ? "block" : "none";
+}
 
-        let visibleCount = 0;
+function changePower(select) {
+    const card = select.closest(".card");
+    const label = card.querySelector(".power");
+    const form = select.value;
 
-        cards.forEach(function(card) {
+    const colors = {
+        "Base Form": "#4d8cff",
+        "First Form": "#f1eaff",
+        "Imperfect Form": "#9bdc54",
+        "Semi Perfect Form": "#65d66b",
+        "Perfect Form": "#a8d94d",
+        "Super Perfect Cell": "#d5f26b",
+        "Super Saiyan": "#ffe45c",
+        "Super Saiyan 2": "#fff176",
+        "Super Saiyan 3": "#ffd34e",
+        "Super Saiyan God": "#ff4242",
+        "Super Saiyan Blue": "#35caff",
+        "Blue Evolution": "#287dff",
+        "Ultra Instinct": "#d9e8ff",
+        "Ultra Instinct Sign": "#9caeff",
+        "Ultra Ego": "#a34cff",
+        "Super Saiyan Rosé": "#ff4caa",
+        "Legendary Super Saiyan": "#48ff72",
+        "Full Power": "#ff4d4d",
+        "Ultimate Gohan": "#a76bff",
+        "Beast Gohan": "#c4a1ff",
+        "Super Saiyan Rage": "#62caff",
+        "Golden Frieza": "#ffd447",
+        "Black Frieza": "#eeeeee",
+        "Potential Unleashed": "#72e3a2",
+        "Orange Piccolo": "#ff873e",
+        "Final Form": "#e5d5ff",
+        "Innocent Buu": "#ff83c8",
+        "Evil Buu": "#d67cff",
+        "Super Buu": "#ff5cba",
+        "Kid Buu": "#ff9acb"
+    };
 
-            let name = card.innerText.toLowerCase();
-
-            let cardSeries = card.getAttribute("data-series");
-
-            let matchesName = name.includes(search);
-
-            let matchesSeries =
-                series === "all" || cardSeries.split(",").includes(series);
-
-            if (matchesName && matchesSeries) {
-                card.style.display = "block";
-                visibleCount++;
-            } else {
-                card.style.display = "none";
-            }
-
-        });
-
-        document.getElementById("noResult").style.display =
-            visibleCount === 0 ? "block" : "none";
-    }
+    const color = colors[form] || "#4d8cff";
+    card.style.setProperty("--power", color);
+    label.textContent = "Transformation: " + form;
+}
 </script>
 
 </body>
